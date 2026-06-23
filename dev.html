@@ -1487,6 +1487,27 @@
                 });
             });
         });
+
+
+
+// Live Character Counter Logic
+const messageInput = document.getElementById('form-message');
+const charCounter = document.getElementById('char-counter');
+
+if (messageInput && charCounter) {
+    messageInput.addEventListener('input', () => {
+        const currentLength = messageInput.value.length;
+        charCounter.textContent = `${currentLength} / 500`;
+        
+        // Visual warning when reaching 90% capacity
+        if (currentLength >= 450) {
+            charCounter.style.color = "#ef4444"; // Soft error red
+        } else {
+            charCounter.style.color = "var(--text-muted, #8e9297)";
+        }
+    });
+}
+
 </script>
 
 
