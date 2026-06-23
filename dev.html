@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KJ97Q6TD');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info GN</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+
+<style>
+        :root {
+            --bg-color: #cbd5e1;  
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --text-topic: #475569;
+            --topic-bg: #f8fafc;
+            --border-color: #e2e8f0;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+            --accent-color: #cbd5e1; 
+            --accent-text: #0f172a;  
+            --chat-lvl-bg: #f1f5f9;
+            --chat-lvl-text: #475569;
+            --instagram-color: #e1306c;
+            --discord-color: #5865f2;
+            --heart-color: #ef4444;
+            --sub-tab-active-border: #7289da;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-topic: #cbd5e1;
+            --topic-bg: #0f172a;
+            --border-color: #334155;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --accent-color: #334155; 
+            --accent-text: #f8fafc;  
+            --chat-lvl-bg: #334155;
+            --chat-lvl-text: #cbd5e1;
+            --sub-tab-active-border: #5865f2;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: clamp(12px, 4vw, 24px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: clamp(14px, 3.5vw, 16px);
+        }
+
+        header, .nav-tabs, main, footer {
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+
+        header {
+            margin-bottom: clamp(12px, 3vw, 18px);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .header-text h1 {
+            font-size: clamp(1.4rem, 6vw, 1.8rem);
+            margin: 0 0 4px 0;
+            line-height: 1.2;
+        }
+
+        .meta {
+            font-size: clamp(0.75rem, 3.2vw, 0.85rem);
+            color: var(--text-muted);
+            margin: 0 0 6px 0;
+        }
+
+        .refresh-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(0.7rem, 3vw, 0.8rem);
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .refresh-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: clamp(3px, 1.2vw, 5px) clamp(6px, 2vw, 12px);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: clamp(0.7rem, 2.8vw, 0.8rem);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 1px 2px var(--shadow-color);
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .refresh-btn:hover {
+            border-color: var(--text-muted);
+            color: var(--text-main);
+        }
+
+        .theme-toggle-btn {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: clamp(6px, 1.8vw, 10px) clamp(10px, 2.5vw, 16px);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: clamp(0.75rem, 3vw, 0.85rem);
+            font-weight: 600;
+            box-shadow: 0 2px 4px var(--shadow-color);
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: var(--card-bg);
+            padding: 4px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            margin-bottom: clamp(16px, 5vw, 24px);
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: clamp(8px, 2.5vw, 12px) 0;
+            font-weight: 700;
+            font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+        }
+
+        .tab-btn.active {
+            background: var(--accent-color);
+            color: var(--accent-text) !important;
+        }
+
+        .view-content {
+            display: none;
+            width: 100%;
+        }
+
+        .view-content.active {
+            display: block;
+        }
+
+        .streamers-container {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(12px, 3.5vw, 16px);
+            width: 100%;
+        }
+
+        .empty-placeholder {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px 24px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px var(--shadow-color);
+        }
+
+        .empty-placeholder i {
+            font-size: 2.5rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            opacity: 0.7;
+        }
+
+        .empty-placeholder h3 {
+            margin: 0 0 6px 0;
+            font-size: clamp(1.05rem, 4vw, 1.2rem);
+        }
+
+        .empty-placeholder p {
+            margin: 0;
+            font-size: clamp(0.8rem, 3vw, 0.88rem);
+            color: var(--text-muted);
+        }
+
+        .streamer-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: clamp(12px, 4vw, 18px);
+            box-shadow: 0 4px 6px -1px var(--shadow-color);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            transition: transform 0.2s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.2s ease;
+        }
+
+        .streamer-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .streamer-card.active {
+            border-color: var(--text-muted);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: clamp(10px, 3vw, 14px);
+        }
+
+        .avatar-container {
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: transform 0.15s ease;
+        }
+        
+        .avatar-container:hover {
+            transform: scale(1.05);
+        }
+
+        .streamer-avatar {
+            width: clamp(40px, 11vw, 52px);
+            height: clamp(40px, 11vw, 52px);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+            background-color: var(--topic-bg);
+            display: block;
+        }
+
+        .follow-heart-badge {
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            background: var(--card-bg);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+            transition: all 0.2s ease;
+        }
+
+        .avatar-container.is-following .follow-heart-badge {
+            background: var(--heart-color);
+            color: #ffffff;
+            border-color: var(--heart-color);
+        }
+
+        .user-meta-block {
+            flex-grow: 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 8px;
+            min-width: 0;
+        }
+
+        .name-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 4px 8px;
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .streamer-name {
+            font-size: clamp(1.05rem, 4.5vw, 1.25rem);
+            font-weight: 700;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .streamer-topic {
+            font-size: clamp(0.75rem, 3.2vw, 0.82rem);
+            color: var(--text-muted);
+            font-style: italic;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .badge {
+            font-size: clamp(0.65rem, 2.5vw, 0.75rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px clamp(6px, 1.8vw, 10px);
+            border-radius: 20px;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+            margin-left: auto;
+        }
+
+        .badge.male { background-color: #e0f2fe; color: #0369a1; }
+        [data-theme="dark"] .badge.male { background-color: #0369a1; color: #e0f2fe; }
+
+        .badge.female { background-color: #fce7f3; color: #be185d; }
+        [data-theme="dark"] .badge.female { background-color: #be185d; color: #fce7f3; }
+
+        .card-stats {
+            overflow: hidden;
+            max-height: 40px;
+            opacity: 1;
+            transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+            display: flex;
+            gap: clamp(12px, 3.5vw, 20px);
+            font-size: clamp(0.75rem, 3.2vw, 0.85rem);
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        .streamer-card.active .card-stats {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .stat-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .chat-container {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 0;
+        }
+
+        .streamer-card.active .chat-container {
+            grid-template-rows: 1fr;
+            margin-top: 12px;
+        }
+
+        .chat-content {
+            overflow: hidden;
+            background-color: var(--topic-bg);
+            border-radius: 8px;
+            border: 1px dashed var(--border-color);
+        }
+
+        .mics-container {
+            padding: 12px;
+            border-bottom: 1px dashed var(--border-color);
+            background-color: rgba(0, 0, 0, 0.01);
+        }
+        
+        .mics-list {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+        
+        .mic-slot {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50px;
+            text-align: center;
+            gap: 4px;
+        }
+        
+        .mic-avatar-wrapper {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            position: relative;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        .mic-avatar-wrapper:hover {
+            transform: scale(1.08);
+        }
+
+        .mic-slot.occupied .mic-avatar-wrapper img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+            box-sizing: border-box;
+            display: block;
+        }
+
+        .mic-slot.occupied .follow-heart-badge {
+            width: 14px;
+            height: 14px;
+            font-size: 0.45rem;
+            bottom: -3px;
+            right: -3px;
+        }
+
+        .mic-avatar-wrapper.is-following .follow-heart-badge {
+            background: var(--heart-color);
+            color: #ffffff;
+            border-color: var(--heart-color);
+        }
+        
+        .mic-slot.empty .mic-avatar-wrapper {
+            border: 2px dashed var(--border-color);
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            cursor: default;
+        }
+        .mic-slot.empty .mic-avatar-wrapper:hover {
+            transform: none;
+        }
+
+        .mic-slot.empty .mic-avatar-wrapper::before {
+            content: "🎤";
+            font-size: 0.75rem;
+            opacity: 0.4;
+        }
+        
+        .mic-speaker-name {
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--text-main);
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chat-history-wrapper {
+            max-height: 220px;
+            overflow-y: auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .chat-row {
+            font-size: clamp(0.8rem, 3.4vw, 0.9rem);
+            line-height: 1.4;
+            word-break: break-word;
+        }
+
+        .chat-user {
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        [data-theme="dark"] .chat-user {
+            color: #38bdf8;
+        }
+
+        .chat-lvl {
+            font-size: 0.65rem;
+            font-weight: 800;
+            background-color: var(--chat-lvl-bg);
+            color: var(--chat-lvl-text);
+            padding: 1px 5px;
+            border-radius: 4px;
+            margin: 0 4px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .chat-text {
+            color: var(--text-main);
+        }
+
+        .chat-empty {
+            font-size: clamp(0.75rem, 3vw, 0.8rem);
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+            padding: 16px 0;
+            margin: 0;
+        }
+
+        /* --- COMMUNITY VIEWS & SUB-TAB NAVIGATION STYLES --- */
+        .community-sub-tabs {
+            display: flex;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--border-color);
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        [data-theme="dark"] .community-sub-tabs {
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+
+        .sub-tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: var(--text-muted);
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            font-size: clamp(0.8rem, 3.5vw, 0.9rem);
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .sub-tab-btn:hover {
+            background-color: rgba(0, 0, 0, 0.03);
+            color: var(--text-main);
+        }
+        [data-theme="dark"] .sub-tab-btn:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        .sub-tab-btn.active {
+            border-bottom-color: var(--sub-tab-active-border);
+            color: var(--text-main);
+        }
+
+        .community-sub-content {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* --- DYNAMIC NEWS FEED STYLES (True Full Width & Natural Uncropped Height) --- */
+        #news-feed-container {
+            display: block !important; 
+            width: 100%;
+            box-sizing: border-box;
+            padding: 16px clamp(12px, 4vw, 18px);
+        }
+
+        .news-article-card {
+            display: block !important; 
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: visible !important; 
+            padding: clamp(12px, 4vw, 18px);
+            box-shadow: 0 2px 4px var(--shadow-color);
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 24px; 
+            height: auto !important; 
+        }
+ 
+        .news-article-title {
+            font-size: clamp(1.05rem, 4.5vw, 1.25rem); /* Scaled down slightly for tight mobile views */
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            line-height: 1.35;
+            color: var(--text-main);
+            letter-spacing: -0.01em;
+        }
+
+        .news-article-img-wrapper {
+            width: 100%;
+            height: auto !important; 
+            max-height: none !important;
+            margin-bottom: 14px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .news-article-img {
+            width: 100% !important;
+            height: auto !important;       
+            max-height: none !important;   
+            min-height: 0 !important;
+            display: block;
+            object-fit: fill !important;   
+        }
+
+        .news-article-content {
+            font-size: clamp(0.88rem, 3.8vw, 1rem);
+            line-height: 1.55;
+            color: var(--text-main);
+            margin: 0;
+            white-space: pre-line;
+        }
+
+        footer {
+            margin-top: clamp(24px, 8vw, 40px);
+            margin-bottom: 20px;
+            padding-top: clamp(16px, 5vw, 24px);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .social-container {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+            font-weight: 600;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+            background-color: var(--topic-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link.instagram {
+            color: var(--text-main);
+        }
+        .social-link.instagram i {
+            color: var(--instagram-color);
+        }
+        .social-link.instagram:hover {
+            border-color: var(--instagram-color);
+            background-color: rgba(225, 48, 108, 0.05);
+        }
+
+        .social-link.discord {
+            color: var(--text-main);
+        }
+        .social-link.discord i {
+            color: var(--discord-color);
+        }
+        .social-link.discord:hover {
+            border-color: var(--discord-color);
+            background-color: rgba(88, 101, 242, 0.05);
+        }
+
+        .loading-text {
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 40px;
+            font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+        }
+
+
+/* --- STYLISH SUBMISSION BOX PRESETS (Pure Div Structure) --- */
+        .contact-form-container {
+            width: 100%;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: clamp(14px, 4vw, 20px);
+            box-shadow: 0 4px 6px -1px var(--shadow-color);
+            box-sizing: border-box;
+            margin-top: 16px;
+        }
+
+        #static-contact-box {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .contact-form-container textarea {
+            width: 100%;
+            min-height: 120px;
+            background-color: var(--topic-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            font-family: inherit;
+            font-size: clamp(0.9rem, 3.5vw, 0.98rem);
+            line-height: 1.5;
+            box-sizing: border-box;
+            resize: vertical;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .contact-form-container textarea:focus {
+            outline: none;
+            border-color: var(--sub-tab-active-border);
+            box-shadow: 0 0 0 3px rgba(114, 137, 218, 0.15);
+        }
+
+        #form-submit-btn {
+            width: 100%;
+            background-color: var(--text-main);
+            color: var(--card-bg);
+            border: none;
+            padding: clamp(10px, 3vw, 14px) 0;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: clamp(0.88rem, 3.5vw, 0.98rem);
+            cursor: pointer;
+            box-shadow: 0 2px 4px var(--shadow-color);
+            transition: opacity 0.2s ease, transform 0.1s ease;
+            -webkit-tap-highlight-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #form-submit-btn:active {
+            transform: scale(0.99);
+        }
+
+        #form-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #form-status-msg {
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: clamp(0.8rem, 3.2vw, 0.88rem);
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        #form-status-msg.success {
+            background-color: rgba(34, 197, 94, 0.12);
+            color: #16a34a;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        #form-status-msg.error {
+            background-color: rgba(239, 68, 68, 0.12);
+            color: #dc2626;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+
+
+
+</style>
+
+
+
+<body>
+    
+    <header>
+        <div class="header-text">
+            <h1 id="site-title">Info GN</h1>
+            <p class="meta">Last Update: <span id="last-updated">Connecting...</span></p>
+            
+            <div class="refresh-row">
+                <span>Updates every 10 min</span>
+                <button class="refresh-btn" id="manual-refresh-btn">🔄 Refresh</button>
+            </div>
+        </div>
+        <button class="theme-toggle-btn" id="theme-button">🌓 Theme</button>
+    </header>
+
+    <nav class="nav-tabs">
+        <button id="btn-streams-view" class="tab-btn" onclick="switchView('streams-view', this)">Streams</button>
+        <button id="btn-following-view" class="tab-btn" onclick="switchView('following-view', this)">Following</button>
+        <button id="btn-community-view" class="tab-btn" onclick="switchView('community-view', this)">Community</button>
+    </nav>
+
+    <main>
+        <div id="streams-view" class="view-content">
+            <div id="streamers-container" class="streamers-container">
+                <p class="loading-text" id="status-message">Fetching fresh streamer nodes...</p>
+            </div>
+        </div>
+
+        <div id="following-view" class="view-content">
+            <div id="following-container" class="streamers-container"></div>
+        </div>
+
+        <div id="community-view" class="view-content">
+            <div class="streamer-card active" style="cursor: default; padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                
+                <div class="community-sub-tabs" style="display: flex; background-color: rgba(0, 0, 0, 0.15); border-bottom: 1px solid var(--border-color, #333); width: 100%; margin: 0; padding: 0;">
+                    <button id="sub-btn-global-chat-sub" class="sub-tab-btn active" onclick="switchCommunitySubView('global-chat-sub', this)" style="flex: 1; padding: 12px; background: none; border: none; border-bottom: 3px solid var(--accent-color, #7289da); color: var(--text-color, #fff); font-weight: bold; cursor: pointer; text-align: center; font-size: 0.9rem; transition: background 0.2s;">Chat</button>
+                    <button id="sub-btn-confessions-sub" class="sub-tab-btn" onclick="switchCommunitySubView('confessions-sub', this)" style="flex: 1; padding: 12px; background: none; border: none; border-bottom: 3px solid transparent; color: var(--text-muted, #aaa); font-weight: bold; cursor: pointer; text-align: center; font-size: 0.9rem; transition: background 0.2s;">Confessions</button>
+                    <button id="sub-btn-news-sub" class="sub-tab-btn" onclick="switchCommunitySubView('news-sub', this)" style="flex: 1; padding: 12px; background: none; border: none; border-bottom: 3px solid transparent; color: var(--text-muted, #aaa); font-weight: bold; cursor: pointer; text-align: center; font-size: 0.9rem; transition: background 0.2s;">📰 News</button>
+                </div>
+
+                <div id="global-chat-sub" class="community-sub-content" style="display: block; padding-top: clamp(12px, 4vw, 18px);">
+                    <div class="card-header" style="margin-bottom: 12px; padding: 0 clamp(12px, 4vw, 18px);">
+                        <div class="user-meta-block">
+                            <div class="name-wrapper">
+                                <h2 class="streamer-name">🌐 Global Chat Room</h2>
+                                <p class="streamer-topic">• Instantly chat without an account</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin: 0 clamp(12px, 4vw, 18px) 14px clamp(12px, 4vw, 18px); padding: 10px 12px; background-color: rgba(255, 255, 255, 0.03); border-left: 3px solid var(--accent-color, #7289da); border-radius: 4px; font-size: 0.85rem; line-height: 1.4; color: var(--text-muted, #aaa);">
+                        📢 <strong>Community Note:</strong> We use a free, third-party chat widget to keep this space open to everyone without requiring an account. Because it's a free tool, you might occasionally notice minor delays or limitations. We appreciate your patience—please keep the chat friendly and respectful!
+                    </div>
+                    
+                    <div style="background-color: var(--topic-bg); border-top: 1px solid var(--border-color); margin: 0; padding: 0; overflow: hidden; min-height: 480px; display: flex; flex-direction: column;">
+                        <iframe src="https://www5.cbox.ws/box/?boxid=964110&boxtag=buXFqZ" width="100%" height="450" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>   
+                    </div>
+                </div>
+
+                <div id="confessions-sub" class="community-sub-content" style="display: none; padding: clamp(12px, 4vw, 18px);">
+                    <div class="card-header" style="margin-bottom: 12px;">
+                        <div class="user-meta-block">
+                            <div class="name-wrapper">
+                                <h2 class="streamer-name">🤫 Anonymous Confessions</h2>
+                                <p class="streamer-topic">• Read and share your deep secrets anonymously</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container" style="margin-bottom: 20px;">
+                        <div id="static-contact-box">
+                            <input type="hidden" id="form-api-key" value="sf_a3793183e2370f45048afbfc">
+                            <input type="hidden" id="form-subject" value="infogn submission">
+
+                            <div class="form-group">
+                                <label for="form-message" class="form-label" style="font-weight: 700; font-size: 0.9rem; color: var(--text-main); display: block; margin-bottom: 6px;">Submit a Secret Anonymously</label>
+                                <textarea 
+                                    id="form-message" 
+                                    placeholder="Write your secret confession here..." 
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <button type="button" id="form-submit-btn">
+                                <span class="btn-text">Send Submission</span>
+                                <span class="btn-spinner" style="display: none;">⌛ Sending...</span>
+                            </button>
+                            
+                            <div id="form-status-msg" style="display: none;"></div>
+                        </div>
+                    </div>
+
+                    <div id="confessions-wall-container" style="display: flex; flex-direction: column; gap: 12px; min-height: 200px;">
+                        <p class="loading-text" style="text-align: center; color: var(--text-muted);">Syncing confessions vault...</p>
+                    </div>
+                </div>
+
+                <div id="news-sub" class="community-sub-content" style="display: none; height: auto !important; max-height: none !important; overflow: visible !important;">
+                    <div id="news-feed-container">
+                        <p class="loading-text">Loading current headliners...</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-container">
+            <a href="instagram://user?username=info_gn" class="social-link instagram" id="insta-link">
+                <i class="fa-brands fa-instagram"></i> info_gn
+            </a>
+            <a class="social-link discord">
+                <i class="fa-brands fa-discord"></i> infogn
+            </a>
+        </div>
+    </footer>
+
+
+<script>
+        let globalCachedStreamers = [];
+        let followedUsers = JSON.parse(localStorage.getItem('followedUsers')) || [];
+
+        function switchView(viewId, element) {
+            document.querySelectorAll('.view-content').forEach(view => {
+                view.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(viewId).classList.add('active');
+            element.classList.add('active');
+
+            localStorage.setItem('activeTab', viewId);
+
+            if (viewId === 'following-view') {
+                renderFollowingView();
+            }
+        }
+
+        function initializeTabSelection() {
+            const savedTab = localStorage.getItem('activeTab') || 'streams-view';
+            const targetBtn = document.getElementById(`btn-${savedTab}`);
+            if (targetBtn) {
+                switchView(savedTab, targetBtn);
+            }
+        }
+
+        function switchCommunitySubView(subViewId, element) {
+            document.querySelectorAll('.community-sub-content').forEach(view => {
+                view.style.display = 'none';
+            });
+            document.querySelectorAll('.sub-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.borderBottomColor = 'transparent';
+                btn.style.color = 'var(--text-muted, #aaa)';
+            });
+            
+            document.getElementById(subViewId).style.display = 'block';
+            element.classList.add('active');
+            element.style.borderBottomColor = 'var(--accent-color, #7289da)';
+            element.style.color = 'var(--text-color, #fff)';
+
+            localStorage.setItem('activeCommunitySubTab', subViewId);
+        }
+
+        function initializeCommunityTabs() {
+            const savedSubTab = localStorage.getItem('activeCommunitySubTab') || 'global-chat-sub';
+            const targetSubBtn = document.getElementById(`sub-btn-${savedSubTab}`);
+            if (targetSubBtn) {
+                switchCommunitySubView(savedSubTab, targetSubBtn);
+            }
+        }
+
+        function loadCommunityNewsFeed() {
+            const container = document.getElementById('news-feed-container');
+            if (!container) return;
+
+            const cacheBuster = Date.now();
+            fetch(`data/posts.json?t=${cacheBuster}`)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network file access error');
+                    return response.json();
+                })
+                .then(postsData => {
+                    container.innerHTML = "";
+                    
+                    const postsArray = Object.values(postsData).reverse();
+
+                    if (postsArray.length === 0) {
+                        container.innerHTML = `
+                            <div style="text-align: center; color: var(--text-muted); padding: 40px 0;">
+                                <span style="font-size: 2.5rem;">📢</span>
+                                <h3>Latest Headliners</h3>
+                                <p>No new updates posted today. Check back later!</p>
+                            </div>`;
+                        return;
+                    }
+
+                    postsArray.forEach(post => {
+                        const article = document.createElement('article');
+                        article.className = 'news-article-card';
+                        
+                        article.innerHTML = `
+                            <h2 class="news-article-title">${post.title || ''}</h2>
+                            <div class="news-article-img-wrapper">
+                                <img src="${post.url || ''}" alt="Article Graphic" class="news-article-img" loading="lazy">
+                            </div>
+                            <p class="news-article-content">${post.content || ''}</p>
+                        `;
+                        container.appendChild(article);
+                    });
+                })
+                .catch(error => {
+                    console.error("News data runtime load error:", error);
+                    container.innerHTML = `<p class="loading-text" style="text-align: center; color: #ef4444;">Failed to sync with local news repository backend asset.</p>`;
+                });
+        }
+
+        // --- NEW: DYNAMIC REVERSE-ORDER CONFESSIONS GENERATOR ---
+        function loadConfessionsFeed() {
+            const container = document.getElementById('confessions-wall-container');
+            if (!container) return;
+
+            const cacheBuster = Date.now();
+            fetch(`data/confessions.json?t=${cacheBuster}`)
+                .then(response => {
+                    if (!response.ok) throw new Error('Confessions repository down');
+                    return response.json();
+                })
+                .then(data => {
+                    container.innerHTML = "";
+                    
+                    // Extracts values and reverses the array index order natively
+                    const confessionsArray = Object.values(data).reverse();
+
+                    if (confessionsArray.length === 0) {
+                        container.innerHTML = `
+                            <div style="background-color: var(--topic-bg, rgba(0,0,0,0.1)); border: 1px solid var(--border-color, #333); padding: 30px; border-radius: 8px; text-align: center; color: var(--text-muted, #aaa);">
+                                <span style="font-size: 2rem;">🔒</span>
+                                <h3>Confessions Vault Empty</h3>
+                                <p>No secrets revealed yet. Be the first!</p>
+                            </div>`;
+                        return;
+                    }
+
+                    confessionsArray.forEach(item => {
+                        const card = document.createElement('div');
+                        
+                        // Inline structural design styled cleanly with your variables
+                        card.style.backgroundColor = "var(--topic-bg, rgba(255,255,255,0.02))";
+                        card.style.border = "1px solid var(--border-color, #2f3136)";
+                        card.style.borderRadius = "8px";
+                        card.style.padding = "14px 16px";
+                        card.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)";
+                        card.style.display = "flex";
+                        card.style.flexDirection = "column";
+                        card.style.gap = "6px";
+
+                        card.innerHTML = `
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--border-color, rgba(255,255,255,0.05)); padding-bottom: 6px; margin-bottom: 4px;">
+                                <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-color, #7289da); text-transform: uppercase; letter-spacing: 0.05em;">🕵️ Incognito Phantom</span>
+                                <span style="font-size: 0.75rem; color: var(--text-muted, #8e9297); font-family: monospace;">${item.date || ''}</span>
+                            </div>
+                            <p style="margin: 0; font-size: 0.95rem; color: var(--text-main, #fff); line-height: 1.5; word-break: break-word;">${item.content || ''}</p>
+                        `;
+                        container.appendChild(card);
+                    });
+                })
+                .catch(error => {
+                    console.error("Confessions process module runtime error:", error);
+                    container.innerHTML = `<p style="text-align: center; color: #ef4444; font-size: 0.88rem; padding: 20px;">⚠️ Failed to load the dynamic confessions payload assets.</p>`;
+                });
+        }
+
+        // Initialize presentation frameworks instantly
+        initializeCommunityTabs();
+        loadCommunityNewsFeed();
+        loadConfessionsFeed(); // Boot runtime collection execution
+
+        function toggleFollowUser(username, event) {
+            if (event) event.stopPropagation(); 
+            
+            if (!username) return;
+
+            const index = followedUsers.indexOf(username);
+            if (index > -1) {
+                followedUsers.splice(index, 1);
+            } else {
+                followedUsers.push(username);
+            }
+
+            localStorage.setItem('followedUsers', JSON.stringify(followedUsers));
+            
+            document.querySelectorAll(`[data-username="${username}"]`).forEach(el => {
+                if (followedUsers.includes(username)) {
+                    el.classList.add('is-following');
+                } else {
+                    el.classList.remove('is-following');
+                }
+            });
+
+            if (localStorage.getItem('activeTab') === 'following-view') {
+                pruneUnfollowedCards();
+            }
+        }
+
+        function pruneUnfollowedCards() {
+            const container = document.getElementById('following-container');
+            const cards = container.querySelectorAll('.streamer-card');
+            
+            let visibleCardsCount = 0;
+
+            cards.forEach(card => {
+                const streamerName = card.getAttribute('data-streamer-name');
+                const streamerMatch = followedUsers.includes(streamerName);
+                
+                let micMatch = false;
+                card.querySelectorAll('.mic-avatar-wrapper').forEach(mic => {
+                    const micName = mic.getAttribute('data-username');
+                    if (followedUsers.includes(micName)) {
+                        micMatch = true;
+                    }
+                });
+
+                if (streamerMatch || micMatch) {
+                    visibleCardsCount++;
+                } else {
+                    card.remove();
+                }
+            });
+
+            if (visibleCardsCount === 0) {
+                container.innerHTML = `
+                    <div class="empty-placeholder">
+                        <i class="fa-solid fa-heart-crack"></i>
+                        <h3>No Streamers Active</h3>
+                        <p>None of the profiles you follow are currently live or participating in mic slots.</p>
+                    </div>`;
+            }
+        }
+
+        setTimeout(function () {
+            const insta = document.getElementById('insta-link');
+            if (insta) {
+                insta.addEventListener('click', function(e) {
+                    setTimeout(function() {
+                        window.location.href = "https://instagram.com/info_gn";
+                    }, 1500);
+                });
+            }
+        }, 100);
+
+        const themeButton = document.getElementById('theme-button');
+        const currentSavedTheme = localStorage.getItem('theme') || 'light';
+        
+        document.documentElement.setAttribute('data-theme', currentSavedTheme);
+        updateButtonText(currentSavedTheme);
+
+        themeButton.addEventListener('click', () => {
+            const activeTheme = document.documentElement.getAttribute('data-theme');
+            const targetTheme = activeTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('theme', targetTheme);
+            updateButtonText(targetTheme);
+        });
+
+        function updateButtonText(theme) {
+            themeButton.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+        }
+
+        document.getElementById('manual-refresh-btn').addEventListener('click', () => {
+            window.location.reload();
+        });
+
+        function convertHexToBase64Image(hexString) {
+            if (!hexString) return "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/></svg>";
+            
+            try {
+                const byteArray = new Uint8Array(hexString.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+                let binaryString = "";
+                for (let i = 0; i < byteArray.length; i++) {
+                    binaryString += String.fromCharCode(byteArray[i]);
+                }
+                return "data:image/jpeg;base64," + btoa(binaryString);
+            } catch (e) {
+                console.error("Hex render compilation error:", e);
+                return "";
+            }
+        }
+
+
+
+
+
+function getRelativeTimeString(unixTimestamp) {
+    if (!unixTimestamp) return "Unknown";
+
+    // Convert to a number and strip out the decimal portion
+    let parsedTime = Math.floor(parseFloat(unixTimestamp));
+
+    // If it's in seconds (10 digits), scale it up to milliseconds
+    if (parsedTime.toString().length === 10) {
+        parsedTime *= 1000;
+    }
+
+    const now = Date.now();
+    const differenceInSeconds = Math.floor((now - parsedTime) / 1000);
+
+    // // Handle slight system clock mismatches smoothly
+    if (differenceInSeconds < 5) {
+        return "Just now";
+    }
+
+
+
+
+    const minutes = Math.floor(differenceInSeconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    if (days > 0) {
+        return days === 1 ? "1 day ago" : `${days} days ago`;
+    }
+    if (hours > 0) {
+        return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
+    }
+    if (minutes > 0) {
+        return minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
+    }
+    
+    return `${differenceInSeconds} seconds ago`;
+}
+
+
+        // --- UPDATED MAIN DATA FETCH ---
+        const millisecondTimestamp = Date.now();
+        const jsonUrl = `https://raw.githubusercontent.com/infogn/data/refs/heads/main/content.json?t=${millisecondTimestamp}`;
+
+        fetch(jsonUrl)
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                return response.json();
+            })
+            .then(data => {
+                // TARGETS THE 'timestamp' KEY INSTEAD OF 'lastUpdated'
+                const rawTimestamp = data.timestamp; 
+                
+                // Set the text immediately on load
+                const lastUpdatedEl = document.getElementById('last-updated');
+                lastUpdatedEl.textContent = getRelativeTimeString(rawTimestamp);
+
+                // Auto-refresh the relative wording string description every 30 seconds
+                setInterval(() => {
+                    lastUpdatedEl.textContent = getRelativeTimeString(rawTimestamp);
+                }, 30000);
+
+                globalCachedStreamers = data.streamers || [];
+                globalCachedStreamers.sort((a, b) => (b.listeners || 0) - (a.listeners || 0));
+
+                renderStreamersList(globalCachedStreamers, 'streamers-container');
+                initializeTabSelection();
+            })
+            .catch(error => {
+                console.error("Extraction failure:", error);
+                document.getElementById('status-message').textContent = "Failed to sync with data backend repository.";
+                initializeTabSelection();
+            });
+
+
+
+        function renderStreamersList(streamersArray, targetContainerId, isEmptyFiltering = false) {
+            const container = document.getElementById(targetContainerId);
+            container.innerHTML = "";
+
+            if (streamersArray.length === 0) {
+                if (isEmptyFiltering) {
+                    container.innerHTML = `
+                        <div class="empty-placeholder">
+                            <i class="fa-solid fa-heart-crack"></i>
+                            <h3>No Streamers Active</h3>
+                            <p>None of the profiles you follow are currently live or participating in mic slots.</p>
+                        </div>`;
+                } else {
+                    container.innerHTML = '<p class="loading-text">No active streamers listed right now.</p>';
+                }
+                return;
+            }
+
+            streamersArray.forEach(streamer => {
+                const card = document.createElement('div');
+                card.className = 'streamer-card';
+                
+                const name = streamer.name || "Anonymous Streamer";
+                card.setAttribute('data-streamer-name', name);
+
+                const gender = streamer.gender === "male" ? "male" : "female";
+                const topic = streamer.topic ? `• ${streamer.topic}` : "";
+                const listeners = streamer.listeners !== undefined ? streamer.listeners.toLocaleString() : "0";
+                const likes = streamer.likes !== undefined ? streamer.likes.toLocaleString() : "0";
+                const imageSrc = convertHexToBase64Image(streamer.hex_picture);
+
+                const isStreamerFollowing = followedUsers.includes(name) ? 'is-following' : '';
+
+                let micsHTML = "";
+                if (streamer.mics !== undefined) {
+                    const micList = streamer.mics || [];
+                    let slotsHTML = "";
+                    
+                    if (micList.length > 0) {
+                        micList.forEach(speaker => {
+                            const speakerImg = convertHexToBase64Image(speaker.hex_picture);
+                            const speakerName = speaker.name || 'Guest';
+                            const isSpeakerFollowing = followedUsers.includes(speakerName) ? 'is-following' : '';
+
+                            slotsHTML += `
+                                <div class="mic-slot occupied">
+                                    <div class="mic-avatar-wrapper ${isSpeakerFollowing}" data-username="${speakerName}" onclick="toggleFollowUser('${speakerName}', event)">
+                                        <img src="${speakerImg}" alt="${speakerName}">
+                                        <div class="follow-heart-badge"><i class="fa-solid fa-heart"></i></div>
+                                    </div>
+                                    <div class="mic-speaker-name">${speakerName}</div>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        slotsHTML = `
+                            <div class="mic-slot empty">
+                                <div class="mic-avatar-wrapper"></div>
+                                <div class="mic-speaker-name">&nbsp;</div>
+                            </div>
+                        `;
+                    }
+
+                    micsHTML = `
+                        <div class="mics-container">
+                            <div class="mics-list">${slotsHTML}</div>
+                        </div>
+                    `;
+                }
+
+                const chatData = streamer.chat || [];
+                let chatRowsHTML = "";
+
+                if (chatData.length > 0) {
+                    chatData.forEach(msg => {
+                        chatRowsHTML += `
+                            <div class="chat-row">
+                                <span class="chat-user">${msg.username || 'User'}</span>
+                                <span class="chat-lvl">Lv.${msg.level ?? 1}</span>
+                                <span class="chat-text">${msg.text || ''}</span>
+                            </div>
+                        `;
+                    });
+                } else {
+                    chatRowsHTML = `<p class="chat-empty">No dynamic chat logs recorded inside this room.</p>`;
+                }
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="avatar-container ${isStreamerFollowing}" data-username="${name}" onclick="toggleFollowUser('${name}', event)">
+                            <img class="streamer-avatar" src="${imageSrc}" alt="${name}'s avatar" loading="lazy">
+                            <div class="follow-heart-badge"><i class="fa-solid fa-heart"></i></div>
+                        </div>
+                        <div class="user-meta-block">
+                            <div class="name-wrapper">
+                                <h2 class="streamer-name">${name}</h2>
+                                <p class="streamer-topic">${topic}</p>
+                            </div>
+                            <span class="badge ${gender}">${gender}</span>
+                        </div>
+                    </div>
+                    <div class="card-stats">
+                        <div class="stat-item">👥 <span>${listeners} listeners</span></div>
+                        <div class="stat-item">❤️ <span>${likes} likes</span></div>
+                    </div>
+                    <div class="chat-container">
+                        <div class="chat-content">
+                            ${micsHTML}
+                            <div class="chat-history-wrapper">
+                                ${chatRowsHTML}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                card.addEventListener('click', (event) => {
+                    if (event.target.closest('.chat-history-wrapper') || event.target.closest('.mics-container') || event.target.closest('[onclick]')) return;
+
+                    const isAlreadyActive = card.classList.contains('active');
+
+                    document.querySelectorAll(`#${targetContainerId} .streamer-card.active`).forEach(activeCard => {
+                        activeCard.classList.remove('active');
+                    });
+
+                    if (!isAlreadyActive) {
+                        card.classList.add('active');
+                        
+                        setTimeout(() => {
+                            const chatWrapper = card.querySelector('.chat-history-wrapper');
+                            if (chatWrapper) {
+                                chatWrapper.scrollTop = chatWrapper.scrollHeight;
+                            }
+                        }, 50);
+                    }
+                });
+
+                container.appendChild(card);
+            });
+        }
+
+        function renderFollowingView() {
+            const followedLiveNodes = globalCachedStreamers.filter(streamer => {
+                const streamerFollowed = followedUsers.includes(streamer.name);
+                
+                let micGuestsFollowed = false;
+                if (streamer.mics && streamer.mics.length > 0) {
+                    micGuestsFollowed = streamer.mics.some(guest => followedUsers.includes(guest.name));
+                }
+
+                return streamerFollowed || micGuestsFollowed;
+            });
+
+            renderStreamersList(followedLiveNodes, 'following-container', true);
+        }
+
+        // Contact Box Submissions Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const submitBtn = document.getElementById('form-submit-btn');
+            if (!submitBtn) return;
+
+            submitBtn.addEventListener('click', () => {
+                const messageEl = document.getElementById('form-message');
+                const apiKey = document.getElementById('form-api-key').value;
+                const subject = document.getElementById('form-subject').value;
+                const statusMsg = document.getElementById('form-status-msg');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnSpinner = submitBtn.querySelector('.btn-spinner');
+
+                if (!messageEl.value.trim()) {
+                    statusMsg.className = 'error';
+                    statusMsg.innerText = "⚠️ Please write a message before sending.";
+                    statusMsg.style.display = 'block';
+                    messageEl.focus();
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                btnText.style.display = 'none';
+                btnSpinner.style.display = 'inline-block';
+                statusMsg.style.display = 'none';
+
+                const payload = {
+                    apiKey: apiKey,
+                    subject: subject,
+                    message: messageEl.value
+                };
+
+                fetch('https://api.staticforms.dev/submit', {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    submitBtn.disabled = false;
+                    btnText.style.display = 'inline-block';
+                    btnSpinner.style.display = 'none';
+
+                    if (data.success) {
+                        statusMsg.className = 'success';
+                        statusMsg.innerText = "🚀 Submission received! Thank you.";
+                        statusMsg.style.display = 'block';
+                        messageEl.value = "";
+                    } else {
+                        throw new Error(data.message || 'Server runtime processing error.');
+                    }
+                })
+                .catch(error => {
+                    console.error("StaticForms transmission error:", error);
+                    submitBtn.disabled = false;
+                    btnText.style.display = 'inline-block';
+                    btnSpinner.style.display = 'none';
+                    
+                    statusMsg.className = 'error';
+                    statusMsg.innerText = "❌ Transmit failure. Please try again later.";
+                    statusMsg.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
