@@ -912,6 +912,8 @@
     </footer>
 
 
+
+
 <script>
         let globalCachedStreamers = [];
         let followedUsers = JSON.parse(localStorage.getItem('followedUsers')) || [];
@@ -1013,7 +1015,7 @@
                 });
         }
 
-        // --- NEW: DYNAMIC REVERSE-ORDER CONFESSIONS GENERATOR ---
+        // --- UPDATED: REVERSE-ORDER CONFESSIONS WITH DYNAMIC NUMBERS ---
         function loadConfessionsFeed() {
             const container = document.getElementById('confessions-wall-container');
             if (!container) return;
@@ -1027,10 +1029,11 @@
                 .then(data => {
                     container.innerHTML = "";
                     
-                    // Extracts values and reverses the array index order natively
-                    const confessionsArray = Object.values(data).reverse();
+                    // Keep track of total elements before reversing
+                    const originalArray = Object.values(data);
+                    const totalConfessions = originalArray.length;
 
-                    if (confessionsArray.length === 0) {
+                    if (totalConfessions === 0) {
                         container.innerHTML = `
                             <div style="background-color: var(--topic-bg, rgba(0,0,0,0.1)); border: 1px solid var(--border-color, #333); padding: 30px; border-radius: 8px; text-align: center; color: var(--text-muted, #aaa);">
                                 <span style="font-size: 2rem;">🔒</span>
@@ -1040,10 +1043,15 @@
                         return;
                     }
 
-                    confessionsArray.forEach(item => {
+                    // Reverse array to show newest first
+                    const confessionsArray = [...originalArray].reverse();
+
+                    confessionsArray.forEach((item, index) => {
                         const card = document.createElement('div');
                         
-                        // Inline structural design styled cleanly with your variables
+                        // Calculate reverse count number (e.g., Total, Total-1, Total-2...)
+                        const confessionNumber = totalConfessions - index;
+
                         card.style.backgroundColor = "var(--topic-bg, rgba(255,255,255,0.02))";
                         card.style.border = "1px solid var(--border-color, #2f3136)";
                         card.style.borderRadius = "8px";
@@ -1055,7 +1063,9 @@
 
                         card.innerHTML = `
                             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--border-color, rgba(255,255,255,0.05)); padding-bottom: 6px; margin-bottom: 4px;">
-                                <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-color, #7289da); text-transform: uppercase; letter-spacing: 0.05em;">🕵️ Incognito Phantom</span>
+                                <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-color, #7289da); text-transform: uppercase; letter-spacing: 0.05em;">
+                                    🕵️ Incognito Phantom #${confessionNumber}
+                                </span>
                                 <span style="font-size: 0.75rem; color: var(--text-muted, #8e9297); font-family: monospace;">${item.date || ''}</span>
                             </div>
                             <p style="margin: 0; font-size: 0.95rem; color: var(--text-main, #fff); line-height: 1.5; word-break: break-word;">${item.content || ''}</p>
@@ -1185,48 +1195,40 @@
             }
         }
 
+        function getRelativeTimeString(unixTimestamp) {
+            if (!unixTimestamp) return "Unknown";
 
+            let parsedTime = Math.floor(parseFloat(unixTimestamp));
 
+            if (parsedTime.toString().length === 10) {
+                parsedTime *= 1000;
+            }
 
+            const now = Date.now();
+            const differenceInSeconds = Math.floor((now - parsedTime) / 1000);
 
-function getRelativeTimeString(unixTimestamp) {
-    if (!unixTimestamp) return "Unknown";
+            if (differenceInSeconds < 5) {
+                return "Just now";
+            }
 
-    // Convert to a number and strip out the decimal portion
-    let parsedTime = Math.floor(parseFloat(unixTimestamp));
+            const minutes = Math.floor(differenceInSeconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
 
-    // If it's in seconds (10 digits), scale it up to milliseconds
-    if (parsedTime.toString().length === 10) {
-        parsedTime *= 1000;
-    }
+            if (days > 0) {
+                return days === 1 ? "1 day ago" : `${days} days ago`;
+            }
+            if (hours > 0) {
+                return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
+            }
+            if (minutes > 0) {
+                return minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
+            }
+            
+            return `${differenceInSeconds} seconds ago`;
+        }
 
-    const now = Date.now();
-    const differenceInSeconds = Math.floor((now - parsedTime) / 1000);
-
-    // // Handle slight system clock mismatches smoothly
-    if (differenceInSeconds < 5) {
-        return "Just now";
-    }
-
-    const minutes = Math.floor(differenceInSeconds / 60);
-    const hours = Math.floor(minutes / 60);
-    const days = Math.floor(hours / 24);
-
-    if (days > 0) {
-        return days === 1 ? "1 day ago" : `${days} days ago`;
-    }
-    if (hours > 0) {
-        return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
-    }
-    if (minutes > 0) {
-        return minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
-    }
-    
-    return `${differenceInSeconds} seconds ago`;
-}
-
-
-        // --- UPDATED MAIN DATA FETCH ---
+        // --- MAIN DATA FETCH ---
         const millisecondTimestamp = Date.now();
         const jsonUrl = `https://raw.githubusercontent.com/infogn/data/refs/heads/main/content.json?t=${millisecondTimestamp}`;
 
@@ -1236,14 +1238,11 @@ function getRelativeTimeString(unixTimestamp) {
                 return response.json();
             })
             .then(data => {
-                // TARGETS THE 'timestamp' KEY INSTEAD OF 'lastUpdated'
                 const rawTimestamp = data.timestamp; 
                 
-                // Set the text immediately on load
                 const lastUpdatedEl = document.getElementById('last-updated');
                 lastUpdatedEl.textContent = getRelativeTimeString(rawTimestamp);
 
-                // Auto-refresh the relative wording string description every 30 seconds
                 setInterval(() => {
                     lastUpdatedEl.textContent = getRelativeTimeString(rawTimestamp);
                 }, 30000);
@@ -1259,8 +1258,6 @@ function getRelativeTimeString(unixTimestamp) {
                 document.getElementById('status-message').textContent = "Failed to sync with data backend repository.";
                 initializeTabSelection();
             });
-
-
 
         function renderStreamersList(streamersArray, targetContainerId, isEmptyFiltering = false) {
             const container = document.getElementById(targetContainerId);
@@ -1481,7 +1478,13 @@ function getRelativeTimeString(unixTimestamp) {
                 });
             });
         });
-    </script>
+</script>
+
+
+
+
+
+
 </body>
 
 
