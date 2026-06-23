@@ -869,14 +869,21 @@
                             <input type="hidden" id="form-api-key" value="sf_a3793183e2370f45048afbfc">
                             <input type="hidden" id="form-subject" value="infogn submission">
 
-                            <div class="form-group">
-                                <label for="form-message" class="form-label" style="font-weight: 700; font-size: 0.9rem; color: var(--text-main); display: block; margin-bottom: 6px;">Submit a Secret Anonymously</label>
-                                <textarea 
-                                    id="form-message" 
-                                    placeholder="Write your secret confession here..." 
-                                    required
-                                ></textarea>
-                            </div>
+
+<div class="form-group">
+    <label for="form-message" class="form-label" style="font-weight: 700; font-size: 0.9rem; color: var(--text-main); display: block; margin-bottom: 6px;">Submit a Secret Anonymously</label>
+    <textarea 
+        id="form-message" 
+        placeholder="Write your secret confession here..." 
+        maxlength="500"
+        required
+    ></textarea>
+    <!-- Character counter display below textarea -->
+    <div id="char-counter" style="text-align: right; font-size: 0.75rem; color: var(--text-muted, #8e9297); margin-top: 4px; font-family: monospace;">
+        0 / 500
+    </div>
+</div>
+
 
                             <button type="button" id="form-submit-btn">
                                 <span class="btn-text">Send Submission</span>
